@@ -642,47 +642,49 @@ body{background:#e8ecf2;}
   <span class="pg-num">2 / 2</span>
 </div>
 
-<!-- Print button (hidden on print) -->
-<div style="text-align:center;padding:20px 0 28px;font-family:'Manrope',sans-serif;" id="printBtn">
-  <button id="dlBtn" style="background:#0070cc;color:#fff;border:none;padding:12px 32px;border-radius:8px;font-size:14px;font-weight:700;cursor:pointer;letter-spacing:.5px;display:inline-flex;align-items:center;gap:8px;box-shadow:0 4px 18px rgba(0,112,204,.35);">
-    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
-    Скачать PDF
-  </button>
-  <p style="margin-top:8px;font-size:11px;color:#8090b8;">Kirill_Forrer_CV.pdf</p>
+<!-- Overlay — показывается пока генерируется PDF -->
+<div id="overlay" style="
+  position:fixed;inset:0;z-index:9999;
+  background:#04060f;
+  display:flex;flex-direction:column;align-items:center;justify-content:center;
+  font-family:'Manrope',sans-serif;gap:20px;">
+  <div style="width:52px;height:52px;border:3px solid rgba(0,112,204,.2);border-top-color:#0070cc;border-radius:50%;animation:spin .8s linear infinite;"></div>
+  <div style="color:#fff;font-size:17px;font-weight:700;">Генерирую PDF...</div>
+  <div style="color:#6b7a99;font-size:13px;">Kirill_Forrer_CV.pdf</div>
+  <style>@keyframes spin{to{transform:rotate(360deg)}}</style>
 </div>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
 <script>
-document.getElementById('dlBtn').addEventListener('click', function() {
-  const btn = this;
-  btn.textContent = 'Генерирую...';
-  btn.disabled = true;
+window.addEventListener('DOMContentLoaded', function() {
+  const overlay = document.getElementById('overlay');
 
-  const pages = document.querySelectorAll('.page');
-  const opt = {
-    margin:      0,
-    filename:    'Kirill_Forrer_CV.pdf',
-    image:       { type: 'jpeg', quality: 0.98 },
-    html2canvas: { scale: 2, useCORS: true, logging: false },
-    jsPDF:       { unit: 'mm', format: 'a4', orientation: 'portrait' },
-    pagebreak:   { mode: 'avoid-all', before: '.page:not(:first-child)' }
-  };
+  // Даём шрифтам загрузиться
+  setTimeout(function() {
+    const opt = {
+      margin:      0,
+      filename:    'Kirill_Forrer_CV.pdf',
+      image:       { type: 'jpeg', quality: 0.99 },
+      html2canvas: { scale: 2, useCORS: true, logging: false },
+      jsPDF:       { unit: 'mm', format: 'a4', orientation: 'portrait' }
+    };
 
-  // Временно скрываем кнопку при рендере
-  document.getElementById('printBtn').style.display = 'none';
+    // Скрываем оверлей на время захвата страницы
+    overlay.style.display = 'none';
 
-  html2pdf()
-    .set(opt)
-    .from(document.body)
-    .save()
-    .then(() => {
-      document.getElementById('printBtn').style.display = 'block';
-      btn.innerHTML = '<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg> Скачать PDF';
-      btn.disabled = false;
-    });
+    html2pdf()
+      .set(opt)
+      .from(document.body)
+      .save()
+      .then(function() {
+        // После скачивания — закрыть вкладку или вернуть на сайт
+        overlay.innerHTML = '<div style="color:#1a8a40;font-size:40px;">✓</div><div style="color:#fff;font-size:17px;font-weight:700;">PDF скачан!</div><a href="/" style="margin-top:8px;color:#0070cc;font-size:13px;text-decoration:none;">← Вернуться на сайт</a>';
+        overlay.style.display = 'flex';
+      });
+  }, 800);
 });
 </script>
-<style>@media print{#printBtn{display:none!important}}</style>
+<style>@media print{#overlay{display:none!important}}</style>
 
 </body>
 </html>
