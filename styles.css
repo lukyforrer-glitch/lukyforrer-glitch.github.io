@@ -909,8 +909,10 @@ body {
   }
   .nav-links.open { display: flex; }
   .nav-links a { padding: 12px 8px; font-size: 15px; border-bottom: 1px solid rgba(255,255,255,.04); }
-  .nav-right { gap: 8px; }
-  .burger { display: flex; cursor: pointer; }
+  .nav-inner { justify-content: space-between; }
+  .nav-links  { flex: 0; }
+  .nav-right  { gap: 8px; margin-left: auto; }
+  .burger     { display: flex; cursor: pointer; }
 
   /* common */
   .con     { padding: 0 18px; }
