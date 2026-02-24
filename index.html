@@ -1,0 +1,593 @@
+<!DOCTYPE html>
+<html lang="ru">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Кирилл Форрер — Senior Cybersecurity & Full-Stack Dev</title>
+    <link rel="stylesheet" href="styles.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@300;400;600;700;800;900&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet" />
+  </head>
+  <body>
+
+    <!-- SVG GRADIENT DEFS (shared) -->
+    <svg width="0" height="0" style="position:absolute;overflow:hidden">
+      <defs>
+        <linearGradient id="rg" x1="0%" y1="0%" x2="100%" y2="0%">
+          <stop offset="0%" stop-color="#2f6fff"/>
+          <stop offset="100%" stop-color="#00b3ff"/>
+        </linearGradient>
+      </defs>
+    </svg>
+
+    <!-- ================== LOADER ================== -->
+    <div id="loader">
+      <div class="ld-wrap">
+        <div class="ld-logo">KIRILL<span>.F</span></div>
+        <pre class="ld-text" id="ldText"></pre>
+        <div class="ld-bar-row">
+          <div class="ld-track"><div class="ld-fill" id="ldFill"></div></div>
+          <span id="ldPct">0%</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- ================== BG CANVAS ================== -->
+    <canvas id="bgCanvas"></canvas>
+
+    <!-- ================== CURSOR ================== -->
+    <div id="curDot"></div>
+    <div id="curRing"></div>
+
+    <!-- ================== FX ================== -->
+    <div class="scanlines"></div>
+    <div class="orb o1"></div>
+    <div class="orb o2"></div>
+    <div class="orb o3"></div>
+
+    <!-- ================== NAVBAR ================== -->
+    <nav id="nav">
+      <div class="nav-inner">
+        <a href="#about" class="nav-logo">KIRILL<span>.F</span></a>
+        <ul class="nav-links">
+          <li><a href="#about"     data-ru="Главная"      data-en="Home">Главная</a></li>
+          <li><a href="#skills"    data-ru="Навыки"        data-en="Skills">Навыки</a></li>
+          <li><a href="#projects"  data-ru="Проекты"       data-en="Projects">Проекты</a></li>
+          <li><a href="#security"  data-ru="Безопасность"  data-en="Security">Безопасность</a></li>
+          <li><a href="#education" data-ru="Образование"   data-en="Education">Образование</a></li>
+          <li><a href="#contact"   data-ru="Контакты"      data-en="Contact">Контакты</a></li>
+        </ul>
+        <div class="nav-right">
+          <button id="langBtn" class="lang-btn">EN</button>
+          <a href="#" onclick="window.print();return false;" class="btn-dl">
+            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+            <span data-ru="CV" data-en="CV">CV</span>
+          </a>
+          <button class="burger" id="burger"><span></span><span></span><span></span></button>
+        </div>
+      </div>
+    </nav>
+
+    <main>
+
+      <!-- ================== HERO ================== -->
+      <section id="about" class="hero-sec">
+        <div class="hero-glow"></div>
+        <div class="hero-bg-kali" aria-hidden="true">
+          <img src="./kali-dragon.svg" alt="" draggable="false" />
+        </div>
+        <div class="hero-inner">
+
+          <div class="hero-left">
+            <span class="avail-badge">
+              <span class="avail-dot"></span>
+              AVAILABLE FOR HIRE
+            </span>
+            <h1 class="hero-name">
+              <span class="glitch" data-text="Кирилл Форрер" data-ru="Кирилл Форрер" data-en="Kirill Forrer" data-text-ru="Кирилл Форрер" data-text-en="Kirill Forrer">Кирилл Форрер</span>
+            </h1>
+            <div class="typerow">
+              <span data-ru="Я — " data-en="I am a ">Я — </span>
+              <span id="tw"></span><span class="bcur">|</span>
+            </div>
+            <p class="hero-desc"
+               data-ru="Senior-разработчик и специалист по кибербезопасности с 6+ годами практического опыта. Строю защищённые системы, провожу пентест инфраструктуры и реализую продукты полного цикла — от архитектуры до деплоя. Веб, мобайл, desktop, Telegram-боты, корпоративное ПО, реверс-инжиниринг, анализ игровых клиентов — работал в каждом направлении с реальными заказчиками."
+               data-en="Senior developer and cybersecurity specialist with 6+ years of hands-on experience. I build secure systems, conduct infrastructure pentests, and ship full-cycle products from architecture to deployment. Web, mobile, desktop, Telegram bots, enterprise software, reverse engineering — worked in every direction with real clients.">
+              Senior-разработчик и специалист по кибербезопасности с 6+ годами практического опыта. Строю защищённые системы, провожу пентест и реализую продукты полного цикла. Веб, мобайл, desktop, боты, корпоративное ПО, реверс-инжиниринг — работал во всех направлениях с реальными заказчиками.
+            </p>
+            <div class="hero-cta">
+              <a href="#projects" class="btn btn-p">
+                <span data-ru="Проекты" data-en="View Projects">Проекты</span>
+                <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+              </a>
+              <a href="#contact" class="btn btn-g">
+                <span data-ru="Связаться" data-en="Contact">Связаться</span>
+              </a>
+            </div>
+            <div class="hero-stats">
+              <div class="s-item">
+                <div class="s-num"><span class="ctr" data-t="15">0</span>+</div>
+                <div class="s-lbl" data-ru="Проектов" data-en="Projects">Проектов</div>
+              </div>
+              <div class="s-item">
+                <div class="s-num"><span class="ctr" data-t="6">0</span>+</div>
+                <div class="s-lbl" data-ru="Лет опыта" data-en="Yrs Exp">Лет опыта</div>
+              </div>
+              <div class="s-item">
+                <div class="s-num"><span class="ctr" data-t="25">0</span>+</div>
+                <div class="s-lbl" data-ru="Технологий" data-en="Technologies">Технологий</div>
+              </div>
+            </div>
+          </div>
+
+          <div class="hero-right">
+            <div class="h3d-wrap">
+              <canvas id="hero3d"></canvas>
+              <div class="fbadge fb-tl">
+                <span class="bdot red"></span>
+                <div><b>Kali Linux</b><small data-ru="Эксперт" data-en="Expert">Эксперт</small></div>
+              </div>
+              <div class="fbadge fb-br">
+                <span class="bdot blue"></span>
+                <div><b>Full-Stack</b><small>Senior Dev</small></div>
+              </div>
+              <div class="fbadge fb-tr">
+                <span class="bdot cyan"></span>
+                <div><b>Pentest</b><small data-ru="Специалист" data-en="Specialist">Специалист</small></div>
+              </div>
+            </div>
+          </div>
+
+        </div>
+        <div class="scroll-hint">
+          <div class="sc-mouse"><div class="sc-wheel"></div></div>
+          <span data-ru="Скролл" data-en="Scroll">Скролл</span>
+        </div>
+      </section>
+
+      <!-- ================== ABOUT ME ================== -->
+      <section class="sec about-sec">
+        <div class="con">
+          <div class="sec-head reveal">
+            <code class="stag">// 00 · обо мне</code>
+            <h2 data-ru="Кто я такой" data-en="Who I Am">Кто я такой</h2>
+          </div>
+          <div class="about-grid">
+            <div class="about-text reveal">
+              <p data-ru="Меня зовут Кирилл Форрер. Я из России. Занимаюсь разработкой и кибербезопасностью с 13 лет — начинал с простых скриптов на Python, дошёл до полноценных корпоративных систем и пентестинга реальной инфраструктуры."
+                 data-en="My name is Kirill Forrer. I'm from Russia. I've been doing development and cybersecurity since the age of 13 — started with simple Python scripts, ended up building full enterprise systems and pentesting real infrastructure.">
+                Меня зовут Кирилл Форрер. Я из России. Занимаюсь разработкой и кибербезопасностью с 13 лет — начинал с простых скриптов на Python, дошёл до корпоративных систем и пентестинга реальной инфраструктуры.
+              </p>
+              <p data-ru="Работаю одновременно в нескольких направлениях: разрабатываю сайты и приложения на заказ, исследую безопасность систем, изучаю реверс-инжиниринг и анализ игровых клиентов. Открыт к любым интересным задачам — от стартапа до enterprise."
+                 data-en="I work across multiple domains simultaneously: building websites and apps on order, researching system security, studying reverse engineering and game client analysis. Open to any interesting challenge — from startup to enterprise.">
+                Работаю в нескольких направлениях: сайты и приложения на заказ, исследование безопасности, реверс-инжиниринг. Открыт к интересным задачам — от стартапа до enterprise.
+              </p>
+            </div>
+            <div class="about-cards reveal">
+              <div class="acard">
+                <div class="acard-ico">
+                  <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="6"/><circle cx="12" cy="12" r="2"/></svg>
+                </div>
+                <h4 data-ru="Цель" data-en="Goal">Цель</h4>
+                <p data-ru="Войти в топовую команду по безопасности или стать lead-разработчиком продукта" data-en="Join a top security team or become lead developer of a product">Войти в топовую команду по безопасности или стать lead dev продукта</p>
+              </div>
+              <div class="acard">
+                <div class="acard-ico">
+                  <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>
+                </div>
+                <h4 data-ru="Подход" data-en="Approach">Подход</h4>
+                <p data-ru="Самоучка по духу — изучаю всё сам, нахожу нестандартные решения, не боюсь сложных задач" data-en="Self-taught by nature — I learn everything myself, find unconventional solutions, never afraid of hard problems">Самоучка по духу — нестандартные решения, не боюсь сложных задач</p>
+              </div>
+              <div class="acard">
+                <div class="acard-ico">
+                  <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
+                </div>
+                <h4 data-ru="Формат" data-en="Format">Формат</h4>
+                <p data-ru="Удалённо / гибрид. Россия и международные проекты. Английский — B2" data-en="Remote / hybrid. Russia and international projects. English — B2">Удалённо / гибрид. Россия и международные проекты. English B2</p>
+              </div>
+              <div class="acard">
+                <div class="acard-ico">
+                  <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10"/><path d="M12 2c0 0 4 4 4 10"/><path d="M20 4l-8 8"/><circle cx="20" cy="4" r="2"/></svg>
+                </div>
+                <h4 data-ru="Интересы" data-en="Interests">Интересы</h4>
+                <p data-ru="Offensive security, CTF, реверс-инжиниринг, разработка инструментов, цифровая экономика" data-en="Offensive security, CTF, reverse engineering, tool development, digital economy">Offensive security, CTF, реверс-инжиниринг, digital economy</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ================== SKILLS ================== -->
+      <section id="skills" class="sec">
+        <div class="con">
+          <div class="sec-head reveal">
+            <code class="stag">// 01 · навыки</code>
+            <h2 data-ru="Стек технологий" data-en="Tech Stack">Стек технологий</h2>
+          </div>
+
+          <div class="skills-grid">
+            <div class="sk-col reveal">
+              <h3 data-ru="Языки программирования" data-en="Programming Languages">Языки программирования</h3>
+              <div class="bars">
+                <div class="bar-item" data-w="95"><div class="bh"><span>Python</span><span>95%</span></div><div class="bt"><div class="bf"></div></div></div>
+                <div class="bar-item" data-w="90"><div class="bh"><span>JavaScript / TypeScript</span><span>90%</span></div><div class="bt"><div class="bf"></div></div></div>
+                <div class="bar-item" data-w="85"><div class="bh"><span>PHP / SQL / Bash</span><span>85%</span></div><div class="bt"><div class="bf"></div></div></div>
+                <div class="bar-item" data-w="75"><div class="bh"><span>C / C++ / C#</span><span>75%</span></div><div class="bt"><div class="bf"></div></div></div>
+                <div class="bar-item" data-w="98"><div class="bh"><span>HTML / CSS</span><span>98%</span></div><div class="bt"><div class="bf"></div></div></div>
+                <div class="bar-item" data-w="80"><div class="bh"><span>Dart / Swift</span><span>80%</span></div><div class="bt"><div class="bf"></div></div></div>
+              </div>
+            </div>
+            <div class="sk-col reveal">
+              <h3 data-ru="Фреймворки и инструменты" data-en="Frameworks & Tools">Фреймворки и инструменты</h3>
+              <div class="tag-cloud">
+                <span class="ttag">React</span><span class="ttag">Vue.js</span><span class="ttag">Next.js</span>
+                <span class="ttag">Node.js</span><span class="ttag">Express</span><span class="ttag">Django</span>
+                <span class="ttag">FastAPI</span><span class="ttag">Flask</span><span class="ttag">Flutter</span>
+                <span class="ttag">React Native</span><span class="ttag">Electron</span><span class="ttag">Docker</span>
+                <span class="ttag">Nginx</span><span class="ttag">PostgreSQL</span><span class="ttag">MongoDB</span>
+                <span class="ttag">Redis</span><span class="ttag">GraphQL</span><span class="ttag">REST API</span>
+                <span class="ttag">Git</span><span class="ttag">CI/CD</span><span class="ttag">Firebase</span>
+                <span class="ttag">Telegram API</span><span class="ttag">Linux Admin</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="radials reveal">
+            <div class="rad-item">
+              <svg viewBox="0 0 100 100" class="rad-svg" data-v="95">
+                <circle class="rbg" cx="50" cy="50" r="42"/>
+                <circle class="rfg" cx="50" cy="50" r="42"/>
+                <text class="rtxt" x="50" y="50" dominant-baseline="middle" text-anchor="middle">95%</text>
+              </svg>
+              <span>Backend</span>
+            </div>
+            <div class="rad-item">
+              <svg viewBox="0 0 100 100" class="rad-svg" data-v="90">
+                <circle class="rbg" cx="50" cy="50" r="42"/>
+                <circle class="rfg" cx="50" cy="50" r="42"/>
+                <text class="rtxt" x="50" y="50" dominant-baseline="middle" text-anchor="middle">90%</text>
+              </svg>
+              <span>Frontend</span>
+            </div>
+            <div class="rad-item">
+              <svg viewBox="0 0 100 100" class="rad-svg" data-v="88">
+                <circle class="rbg" cx="50" cy="50" r="42"/>
+                <circle class="rfg" cx="50" cy="50" r="42"/>
+                <text class="rtxt" x="50" y="50" dominant-baseline="middle" text-anchor="middle">88%</text>
+              </svg>
+              <span>Security</span>
+            </div>
+            <div class="rad-item">
+              <svg viewBox="0 0 100 100" class="rad-svg" data-v="82">
+                <circle class="rbg" cx="50" cy="50" r="42"/>
+                <circle class="rfg" cx="50" cy="50" r="42"/>
+                <text class="rtxt" x="50" y="50" dominant-baseline="middle" text-anchor="middle">82%</text>
+              </svg>
+              <span>Mobile</span>
+            </div>
+            <div class="rad-item">
+              <svg viewBox="0 0 100 100" class="rad-svg" data-v="85">
+                <circle class="rbg" cx="50" cy="50" r="42"/>
+                <circle class="rfg" cx="50" cy="50" r="42"/>
+                <text class="rtxt" x="50" y="50" dominant-baseline="middle" text-anchor="middle">85%</text>
+              </svg>
+              <span>DevOps</span>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ================== PROJECTS ================== -->
+      <section id="projects" class="sec">
+        <div class="con">
+          <div class="sec-head reveal">
+            <code class="stag">// 02 · проекты</code>
+            <h2 data-ru="Избранные работы" data-en="Featured Work">Избранные работы</h2>
+          </div>
+          <div class="proj-grid">
+
+            <article class="pcard reveal" style="--d:0ms">
+              <div class="pnum">01</div>
+              <h3>Valorant Strike</h3>
+              <p data-ru="Аналитическая платформа для магазина Valorant — трекинг скинов в реальном времени, мониторинг цен и анализ инвентаря игроков."
+                 data-en="Analytics platform for Valorant store — real-time skin tracking, price monitoring and player inventory analysis.">
+                Аналитическая платформа для магазина Valorant — трекинг скинов, мониторинг цен и анализ инвентаря.
+              </p>
+              <div class="ptags"><span>React</span><span>Node.js</span><span>Riot API</span></div>
+              <a href="https://valorantstrike.com/valorant-store/" target="_blank" rel="noreferrer" class="plink">
+                <span data-ru="Открыть" data-en="Open">Открыть</span>
+                <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+              </a>
+              <div class="pglow"></div>
+            </article>
+
+            <article class="pcard reveal" style="--d:100ms">
+              <div class="pnum">02</div>
+              <h3>Buddy Music Bot</h3>
+              <p data-ru="Telegram-бот для воспроизведения музыки с управлением очередями, поиском треков и автоматизацией — тысячи активных пользователей."
+                 data-en="Telegram music bot with queue management, track search, and automation — thousands of daily active users.">
+                Telegram-бот для воспроизведения музыки, управления очередями — тысячи активных пользователей.
+              </p>
+              <div class="ptags"><span>Python</span><span>Telegram API</span><span>FFmpeg</span></div>
+              <a href="https://t.me/Buddy_musicbot" target="_blank" rel="noreferrer" class="plink">
+                <span data-ru="Открыть бот" data-en="Open Bot">Открыть бот</span>
+                <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+              </a>
+              <div class="pglow"></div>
+            </article>
+
+            <article class="pcard reveal" style="--d:200ms">
+              <div class="pnum">03</div>
+              <h3>Dandy Pizza</h3>
+              <p data-ru="Платформа доставки для московской сети пиццерий — онлайн заказы, управление меню и поддержка нескольких филиалов."
+                 data-en="Delivery platform for Moscow pizza chain — online ordering, menu management, and multi-branch support.">
+                Платформа доставки для московской сети пиццерий — онлайн заказы и управление несколькими филиалами.
+              </p>
+              <div class="ptags"><span>Vue.js</span><span>PHP</span><span>MySQL</span></div>
+              <div class="plinks-row">
+                <a href="https://dandypizza.com/" target="_blank" rel="noreferrer" class="plink">dandypizza.com</a>
+                <a href="https://lublino.dandypizza.com/" target="_blank" rel="noreferrer" class="plink">lublino</a>
+              </div>
+              <div class="pglow"></div>
+            </article>
+
+            <article class="pcard reveal" style="--d:300ms">
+              <div class="pnum">04</div>
+              <h3>Trezv777 — Enterprise SW</h3>
+              <p data-ru="Полное корпоративное ПО с нуля — CRM-система, аналитический дашборд, автоматизация бизнес-процессов и отчётность."
+                 data-en="Full enterprise software from scratch — CRM system, analytics dashboard, business process automation and reporting.">
+                Корпоративное ПО с нуля — CRM, аналитический дашборд, автоматизация бизнес-процессов.
+              </p>
+              <div class="ptags"><span>Python</span><span>Django</span><span>PostgreSQL</span></div>
+              <a href="https://trezv777.ru/" target="_blank" rel="noreferrer" class="plink">
+                <span data-ru="Открыть" data-en="Open">Открыть</span>
+                <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+              </a>
+              <div class="pglow"></div>
+            </article>
+
+            <article class="pcard reveal red-card" style="--d:400ms">
+              <div class="pnum">05</div>
+              <h3 data-ru="Пентест-фреймворк" data-en="Pentest Framework">Пентест-фреймворк</h3>
+              <p data-ru="Кастомный автоматизированный инструментарий пентестинга — сетевая разведка, поиск уязвимостей CVE, генерация отчётов для аудитов."
+                 data-en="Custom automated pentest toolkit — network recon, CVE vulnerability scanning, report generation for security audits.">
+                Автоматизированный инструментарий пентестинга — разведка, сканирование CVE, генерация отчётов.
+              </p>
+              <div class="ptags"><span>Python</span><span>Kali Linux</span><span>Bash</span></div>
+              <span class="pprivate">🔒 Private</span>
+              <div class="pglow pglow-r"></div>
+            </article>
+
+            <article class="pcard reveal" style="--d:500ms">
+              <div class="pnum">06</div>
+              <h3>Mobile App (iOS / Android)</h3>
+              <p data-ru="Кроссплатформенное мобильное приложение с real-time синхронизацией, push-уведомлениями и поддержкой offline-режима."
+                 data-en="Cross-platform mobile app with real-time sync, push notifications, and offline mode support.">
+                Кроссплатформенное приложение с real-time синхронизацией, push-уведомлениями, offline режимом.
+              </p>
+              <div class="ptags"><span>Flutter</span><span>Dart</span><span>Firebase</span></div>
+              <span class="pprivate">⚡ <span data-ru="В разработке" data-en="In Dev">В разработке</span></span>
+              <div class="pglow"></div>
+            </article>
+
+            <article class="pcard reveal" style="--d:600ms">
+              <div class="pnum">07</div>
+              <h3>LZT Market — Digital Goods</h3>
+              <p data-ru="Автоматизированная продажа цифровых товаров и аккаунтов на крупнейшей площадке Рунета. Написаны кастомные Python-скрипты для управления листингами, мониторинга цен и автоматических уведомлений покупателям."
+                 data-en="Automated digital goods and accounts trading on the largest Russian marketplace. Built custom Python scripts for listing management, price monitoring and automated buyer notifications.">
+                Автоматизированная продажа цифровых товаров. Python-скрипты для управления листингами, мониторинга цен и уведомлений.
+              </p>
+              <div class="ptags"><span>Python</span><span>Automation</span><span>API</span><span>Bots</span></div>
+              <a href="https://lzt.market/user/9248684/items" target="_blank" rel="noreferrer" class="plink">
+                <span data-ru="Открыть профиль" data-en="View Profile">Открыть профиль</span>
+                <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+              </a>
+              <div class="pglow"></div>
+            </article>
+
+            <article class="pcard reveal red-card" style="--d:700ms">
+              <div class="pnum">08</div>
+              <h3>Game Process Security Research</h3>
+              <p data-ru="Исследование внутренней архитектуры игровых клиентов: анализ памяти процессов, перехват WinAPI-вызовов, внедрение кастомного кода в адресное пространство. Изучение kernel-level античит-систем (Vanguard, BattlEye, EAC) и способов их обхода в рамках авторизованного аудита."
+                 data-en="Research into game client internals: process memory analysis, WinAPI call hooking, custom code injection into address space. Study of kernel-level anti-cheat systems (Vanguard, BattlEye, EAC) and bypass methods within authorized security audit scope.">
+                Анализ памяти процессов, перехват WinAPI, DLL-инъекции в адресное пространство. Исследование Vanguard, BattlEye, EAC на уровне ядра.
+              </p>
+              <div class="ptags"><span>C++</span><span>WinAPI</span><span>DLL Inject</span><span>x64dbg</span><span>Kernel</span></div>
+              <a href="https://elitehacks.ru/en/valorant/private" target="_blank" rel="noreferrer" class="plink">
+                <span data-ru="Подробнее" data-en="Details">Подробнее</span>
+                <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+              </a>
+              <div class="pglow pglow-r"></div>
+            </article>
+
+          </div>
+        </div>
+      </section>
+
+      <!-- ================== CYBERSECURITY ================== -->
+      <section id="security" class="sec">
+        <div class="con">
+          <div class="sec-head reveal">
+            <code class="stag">// 03 · безопасность</code>
+            <h2 data-ru="Кибербезопасность" data-en="Cybersecurity">Кибербезопасность</h2>
+          </div>
+
+          <div class="sec-grid">
+            <div class="sec-terminal reveal">
+              <div class="term-bar">
+                <span class="td r"></span><span class="td o"></span><span class="td b"></span>
+                <span class="ttitle">root@kali — bash</span>
+              </div>
+              <div class="term-out" id="termOut">
+                <div class="tl"><span class="tp">┌──(root㉿kali)-[~]</span></div>
+                <div class="tl"><span class="tp">└─#</span> <span class="tc">whoami</span></div>
+                <div class="tl to">kirill — senior security engineer</div>
+                <div class="tl"><span class="tp">└─#</span> <span class="tc" id="tcur"></span><span class="bcur">▌</span></div>
+              </div>
+            </div>
+
+            <div class="sec-cards reveal">
+              <div class="scard tilt">
+                <div class="sc-ico">
+                  <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+                </div>
+                <h4 data-ru="Пентестинг" data-en="Penetration Testing">Пентестинг</h4>
+                <p data-ru="Black / white / grey-box тестирование веб-приложений, API и сетевой инфраструктуры."
+                   data-en="Black/white/grey-box testing of web apps, APIs, and network infrastructure.">
+                  Black / white / grey-box тестирование веб-приложений, API и инфраструктуры.
+                </p>
+              </div>
+              <div class="scard tilt">
+                <div class="sc-ico">
+                  <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><ellipse cx="12" cy="5" rx="9" ry="3"/><path d="M21 12c0 1.66-4 3-9 3s-9-1.34-9-3"/><path d="M3 5v14c0 1.66 4 3 9 3s9-1.34 9-3V5"/></svg>
+                </div>
+                <h4 data-ru="Аудит безопасности" data-en="Security Audit">Аудит безопасности</h4>
+                <p data-ru="Анализ инфраструктуры, оценка уязвимостей, рекомендации по hardening и написание отчётов."
+                   data-en="Infrastructure analysis, vulnerability assessment, hardening recommendations and detailed reports.">
+                  Анализ инфраструктуры, оценка уязвимостей, hardening и отчётность.
+                </p>
+              </div>
+              <div class="scard tilt">
+                <div class="sc-ico">
+                  <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg>
+                </div>
+                <h4 data-ru="Exploit Dev" data-en="Exploit Development">Exploit Dev</h4>
+                <p data-ru="Написание PoC эксплойтов, анализ CVE, reverse engineering бинарных файлов и малвари."
+                   data-en="Writing PoC exploits, CVE analysis, reverse engineering of binaries and malware.">
+                  Написание PoC эксплойтов, анализ CVE, reverse engineering бинарников.
+                </p>
+              </div>
+              <div class="scard tilt">
+                <div class="sc-ico">
+                  <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="2" y="3" width="20" height="14" rx="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg>
+                </div>
+                <h4 data-ru="Сетевая безопасность" data-en="Network Security">Сетевая безопасность</h4>
+                <p data-ru="Настройка фаервола, анализ трафика, обнаружение вторжений, VPN и туннелирование."
+                   data-en="Firewall config, traffic analysis, intrusion detection, VPN and tunneling.">
+                  Настройка фаервола, анализ трафика, IDS, VPN и туннелирование.
+                </p>
+              </div>
+            </div>
+          </div>
+
+          <div class="tools-row reveal">
+            <span class="tchip">Kali Linux</span><span class="tchip">Metasploit</span>
+            <span class="tchip">Nmap</span><span class="tchip">Burp Suite</span>
+            <span class="tchip">Wireshark</span><span class="tchip">SQLMap</span>
+            <span class="tchip">John The Ripper</span><span class="tchip">Aircrack-ng</span>
+            <span class="tchip">Hydra</span><span class="tchip">Nikto</span>
+            <span class="tchip">OWASP ZAP</span><span class="tchip">Gobuster</span>
+            <span class="tchip">Masscan</span><span class="tchip">Hashcat</span>
+            <span class="tchip tchip-dim" title="Process Memory Injection Research">DLL Inject</span>
+            <span class="tchip tchip-dim" title="Windows API Hooking & Analysis">WinAPI Hooking</span>
+            <span class="tchip tchip-dim" title="Dynamic Binary Analysis / Debugging">x64dbg</span>
+            <span class="tchip tchip-dim" title="Kernel-Level Driver Research">Kernel Driver Dev</span>
+            <span class="tchip tchip-dim" title="Cheat Engine — Memory Scanner / Researcher">Cheat Engine</span>
+            <span class="tchip tchip-dim" title="Process Environment Block / Windows Internals">Windows Internals</span>
+          </div>
+        </div>
+      </section>
+
+      <!-- ================== EDUCATION ================== -->
+      <section id="education" class="sec">
+        <div class="con">
+          <div class="sec-head reveal">
+            <code class="stag">// 04 · образование</code>
+            <h2 data-ru="Образование и опыт" data-en="Education & Experience">Образование и опыт</h2>
+          </div>
+
+          <div class="timeline">
+            <div class="tl-item reveal">
+              <div class="tl-mark"><div class="tl-dot"></div><div class="tl-line"></div></div>
+              <div class="tl-card tilt">
+                <span class="tl-yr">2022 — 2026</span>
+                <h3 data-ru="КПК РТУ МИРЭА / МФЮА — Кибербезопасность" data-en="RTU MIREA College / MFUA — Cybersecurity">КПК РТУ МИРЭА / МФЮА — Кибербезопасность</h3>
+                <p data-ru="Колледж программирования и кибербезопасности РТУ МИРЭА + МФЮА. Специальность: 10.02.05 «Обеспечение информационной безопасности автоматизированных систем». 4-летняя программа после 9 класса. Окончание — 2026."
+                   data-en="College of Programming and Cybersecurity at RTU MIREA + MFUA. Major: 10.02.05 «Information Security of Automated Systems». 4-year program after 9th grade. Graduating 2026.">
+                  Колледж программирования и кибербезопасности — РТУ МИРЭА / МФЮА. Специальность: 10.02.05 «ИБ автоматизированных систем». 4 года. Окончание — 2026.
+                </p>
+                <div class="tl-tags"><span>ИБ / 10.02.05</span><span>Сети</span><span>Kali Linux</span><span>Криптография</span><span>РТУ МИРЭА</span></div>
+              </div>
+            </div>
+            <div class="tl-item reveal">
+              <div class="tl-mark"><div class="tl-dot"></div><div class="tl-line"></div></div>
+              <div class="tl-card tilt">
+                <span class="tl-yr">2023 — н.в.</span>
+                <h3 data-ru="Самообучение и CTF соревнования" data-en="Self-Study & CTF Competitions">Самообучение и CTF соревнования</h3>
+                <p data-ru="Участие в CTF, разработка exploit-фреймворков, изучение reverse engineering и анализа вредоносного ПО."
+                   data-en="CTF participation, exploit framework development, reverse engineering and malware analysis.">
+                  Участие в CTF, разработка exploit-фреймворков, reverse engineering, анализ малвари.
+                </p>
+                <div class="tl-tags"><span>CTF</span><span>Reverse Eng.</span><span>Exploit Dev</span></div>
+              </div>
+            </div>
+            <div class="tl-item reveal">
+              <div class="tl-mark"><div class="tl-dot"></div></div>
+              <div class="tl-card tilt">
+                <span class="tl-yr">2024 — 2026</span>
+                <h3 data-ru="Коммерческие проекты" data-en="Commercial Projects">Коммерческие проекты</h3>
+                <p data-ru="Full-cycle разработка для реальных клиентов: сайты, Telegram-боты, desktop ПО и корпоративные системы от ТЗ до деплоя."
+                   data-en="Full-cycle development for real clients: websites, Telegram bots, desktop software, corporate systems from spec to deploy.">
+                  Full-cycle разработка для реальных клиентов: сайты, боты, desktop ПО от ТЗ до деплоя.
+                </p>
+                <div class="tl-tags"><span>Freelance</span><span>Commercial</span><span>Full-Stack</span></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ================== CONTACT ================== -->
+      <section id="contact" class="sec">
+        <div class="con">
+          <div class="sec-head reveal">
+            <code class="stag">// 05 · контакты</code>
+            <h2 data-ru="Свяжитесь со мной" data-en="Get In Touch">Свяжитесь со мной</h2>
+          </div>
+          <div class="contact-wrap reveal">
+            <p class="contact-lead"
+               data-ru="Открыт к новым возможностям — full-time, freelance или сотрудничество. Отвечу в течение 24 часов."
+               data-en="Open to new opportunities — full-time, freelance, or collaboration. I'll reply within 24 hours.">
+              Открыт к новым возможностям — full-time, freelance или сотрудничество. Отвечу в течение 24 часов.
+            </p>
+            <div class="clinks">
+              <a href="mailto:Kirill2006788@gmail.com" class="ccard tilt">
+                <div class="cc-ico">
+                  <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+                </div>
+                <div class="cc-txt">
+                  <span class="cc-lbl">Email</span>
+                  <strong>Kirill2006788@gmail.com</strong>
+                </div>
+                <span class="cc-arr">→</span>
+              </a>
+              <a href="https://t.me/HeyBro8664" target="_blank" rel="noreferrer" class="ccard tilt">
+                <div class="cc-ico">
+                  <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg>
+                </div>
+                <div class="cc-txt">
+                  <span class="cc-lbl">Telegram</span>
+                  <strong>@HeyBro8664</strong>
+                </div>
+                <span class="cc-arr">→</span>
+              </a>
+            </div>
+          </div>
+        </div>
+      </section>
+
+    </main>
+
+    <footer class="footer">
+      <div class="foot-inner">
+        <span>© 2026 Кирилл Форрер</span>
+        <span class="foot-mid">Senior Cybersecurity &amp; Full-Stack Developer</span>
+        <span style="color:rgba(255,255,255,.18);font-size:11px;font-family:var(--mono)">root@kali:~# _</span>
+      </div>
+    </footer>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r134/three.min.js"></script>
+    <script src="app.js"></script>
+  </body>
+</html>
